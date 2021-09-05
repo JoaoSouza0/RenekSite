@@ -1,0 +1,43 @@
+{
+    "user":[
+        {
+            "id":"joao@email.com",
+            "email":"joao@email.com",
+            "name":"joao",
+            "password":"123",
+            "street":"Rua Noberto Riesta",
+            "number":"23",
+            "state":"SP",
+            "city":"São Paulo"
+        }
+    ],
+    "products":[
+        {
+            "id":"notebook",
+            "name":"noteBook",
+            "user_id":"joao@email.com",
+            "price":"4999",
+            "sell":"false",
+            "descript":"This is a new note"
+            
+        },
+        {
+            "id":"book",
+            "name":"Book",
+            "user_id":"joao@email.com",
+            "price":"4999",
+            "sell":"false",
+            "descript":"This is a new Book"
+            
+        },
+        {
+            "id":"celular",
+            "name":"celular",
+            "user_id":"joao@email.com",
+            "price":"4999",
+            "sell":"false",
+            "descript":"This is a new CEl"
+            
+        }
+    ]
+}
