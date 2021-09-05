@@ -4,5 +4,5 @@ export function serialize(obj){
     {
         queryString = `&${key}=${obj[key]}`
     }
-    return `?_limit=10${queryString}`
+    return queryString
 }

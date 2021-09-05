@@ -1,7 +1,7 @@
 <template>
   <section class="product-container">
     <div v-if="products && products.length" class="products">
-      <div v-for="product in products" :key="product.id" class="product">
+      <div v-for="(product, index) in products" :key="index" class="product">
         <router-link to="/">
         <h2 class="title">{{ product.name }}</h2>
         <p class="price">{{ product.price }}</p>
@@ -12,23 +12,30 @@
     <div v-else-if="products && products.length ==0" class="no-price">
       <p>We can't be able to find a product </p>
     </div>
-    
+    <pagination :productsTotal="productsTotal" :productsPerPage="productsPerPage"></pagination>
   </section>
 </template>
 
 <script>
 import { api } from "@/services.js";
 import { serialize } from "@/helper.js";
+import Pagination from '@/components/Products/Pagination.vue'
 export default {
   name: "List",
   data() {
     return {
       products: null,
+      productsPerPage: 5,
+      productsTotal: 0,
     };
+  },
+  components:{
+    Pagination
+    
   },
   computed: {
     url() {
-      return serialize(this.$route.query);
+      return `?_limit=${this.productsPerPage}${serialize(this.$route.query)}`;
     },
   },
   watch: {
@@ -39,6 +46,7 @@ export default {
   methods: {
     async getProducts() {
       const productResponse = await api.get(`/products${this.url}`);
+      this.productsTotal = Number(productResponse.headers['x-total-count'])
       this.products = productResponse.data;
     },
   },
