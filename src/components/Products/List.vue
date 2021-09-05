@@ -1,25 +1,33 @@
 <template>
   <section class="product-container">
-    <div v-if="products && products.length" class="products">
-      <div v-for="(product, index) in products" :key="index" class="product">
-        <router-link to="/">
-        <h2 class="title">{{ product.name }}</h2>
-        <p class="price">{{ product.price }}</p>
-        <p class="descript">{{ product.descript }}</p>
-        </router-link>
+    <transition mode="out-in">
+      <div v-if="products && products.length" class="products" key="products">
+        <div v-for="(product, index) in products" :key="index" class="product">
+          <router-link to="/">
+            <h2 class="title">{{ product.name }}</h2>
+            <p class="price">{{ product.price }}</p>
+            <p class="descript">{{ product.descript }}</p>
+          </router-link>
+        </div>
+        <pagination
+          :productsTotal="productsTotal"
+          :productsPerPage="productsPerPage"
+        ></pagination>
       </div>
-    </div>
-    <div v-else-if="products && products.length ==0" class="no-price">
-      <p>We can't be able to find a product </p>
-    </div>
-    <pagination :productsTotal="productsTotal" :productsPerPage="productsPerPage"></pagination>
+      <div v-else-if="products && products.length == 0" class="no-price" key="cant-find">
+        <p>We can't be able to find a product</p>
+      </div>
+      <div v-else key="loading">
+        <loading-page />
+      </div>
+    </transition>
   </section>
 </template>
 
 <script>
 import { api } from "@/services.js";
 import { serialize } from "@/helper.js";
-import Pagination from '@/components/Products/Pagination.vue'
+import Pagination from "@/components/Products/Pagination.vue";
 export default {
   name: "List",
   data() {
@@ -29,9 +37,8 @@ export default {
       productsTotal: 0,
     };
   },
-  components:{
-    Pagination
-    
+  components: {
+    Pagination,
   },
   computed: {
     url() {
@@ -45,8 +52,9 @@ export default {
   },
   methods: {
     async getProducts() {
+      this.products = null;
       const productResponse = await api.get(`/products${this.url}`);
-      this.productsTotal = Number(productResponse.headers['x-total-count'])
+      this.productsTotal = Number(productResponse.headers["x-total-count"]);
       this.products = productResponse.data;
     },
   },
@@ -57,16 +65,16 @@ export default {
 </script>
 
 <style scoped>
-.products-container{
+.products-container {
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(3 ,1fr) ;
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin:30px;
+  margin: 30px;
 }
 
 .product {
@@ -77,25 +85,25 @@ export default {
   transition: all 0.2s;
 }
 
-.product:hover{
+.product:hover {
   box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
   transform: scale(1.1);
   position: relative;
   z-index: 1;
 }
-.product img{
- border-radius: 4px;
- margin-bottom: 20px;
+.product img {
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
-.title{
+.title {
   margin-bottom: 10px;
 }
-.price{
+.price {
   color: #e80;
   font-weight: bold;
 }
 
-.no-price{
+.no-price {
   text-align: center;
 }
 </style>
