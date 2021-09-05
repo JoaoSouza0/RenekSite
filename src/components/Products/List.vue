@@ -3,9 +3,9 @@
     <transition mode="out-in">
       <div v-if="products && products.length" class="products" key="products">
         <div v-for="(product, index) in products" :key="index" class="product">
-          <router-link to="/">
+          <router-link :to="{ name: 'products', params: { id: product.id } }">
             <h2 class="title">{{ product.name }}</h2>
-            <p class="price">{{ product.price }}</p>
+            <p class="price">{{ product.price | priceNumber }}</p>
             <p class="descript">{{ product.descript }}</p>
           </router-link>
         </div>
@@ -14,7 +14,11 @@
           :productsPerPage="productsPerPage"
         ></pagination>
       </div>
-      <div v-else-if="products && products.length == 0" class="no-price" key="cant-find">
+      <div
+        v-else-if="products && products.length == 0"
+        class="no-price"
+        key="cant-find"
+      >
         <p>We can't be able to find a product</p>
       </div>
       <div v-else key="loading">
