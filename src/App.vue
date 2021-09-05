@@ -23,9 +23,9 @@ export default {
 * {
   box-sizing: border-box;
 }
-:root{
-  --primary-color:#87f;
-  --secondary-color:#65d;
+:root {
+  --primary-color: #87f;
+  --secondary-color: #65d;
 }
 
 body,
@@ -76,12 +76,31 @@ img {
   transform: scale(1.1);
 }
 
-#app{
+#app {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
-#main{
-  flex:1;
+#main {
+  flex: 1;
+}
+input,
+textarea {
+  border-radius: 4px;
+  border: none;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
+  transition: all 0.3s;
+  font-size: 1rem;
+  font-family: "Avenir", Arial, Helvetica, sans-serif;
+  margin-bottom: 15px;
+}
+input,
+textarea, 
+input:hover,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 6px 12px rgba(30 , 60, 90, 0.2) ;
+  border-color: var(--primary-color);
 }
 </style>
