@@ -15,8 +15,12 @@ export const api = {
     put(){
 
     },
-    delete(){
-
+    delete(endpoint){
+        return axiosInstance.delete(endpoint)
     }
 
+}
+
+export function getCep (cep){
+    return axios.get(`https://viacep.com.br/ws/${cep}/json/`)
 }
