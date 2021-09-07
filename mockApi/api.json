@@ -7,7 +7,7 @@
       "password": "21312321421",
       "postalCode": "04853080",
       "street": "Rua Norberto Riesta",
-      "number": "12",
+      "number": "3432",
       "neighborhood": "Jardim Noronha",
       "city": "São Paulo",
       "state": "SP"
@@ -109,6 +109,68 @@
       "photo": "null",
       "user_id": "joao@gmail.com",
       "id": "N7w4cM1"
+    }
+  ],
+  "transacao": [
+    {
+      "buyer_id": "joao@gmail.coms",
+      "seller_id": "joao@gmail.com",
+      "product": {
+        "id": "celular",
+        "name": "celular 1",
+        "user_id": "joao@gmail.com",
+        "price": "4999",
+        "sell": "false",
+        "descript": "This is a new CEl"
+      },
+      "address": {
+        "street": "Rua Norberto Riesta",
+        "number": "12",
+        "neighborhood": "Jardim Noronha",
+        "city": "São Paulo",
+        "state": "SP"
+      },
+      "id": 1
+    },
+    {
+      "buyer_id": "joao@gmail.coms",
+      "seller_id": "joao@gmail.com",
+      "product": {
+        "id": "celular",
+        "name": "celular 1",
+        "user_id": "joao@gmail.com",
+        "price": "4999",
+        "sell": "false",
+        "descript": "This is a new CEl"
+      },
+      "address": {
+        "street": "Rua Norberto Riesta",
+        "number": "12",
+        "neighborhood": "Jardim Noronha",
+        "city": "São Paulo",
+        "state": "SP"
+      },
+      "id": 2
+    },
+    {
+      "buyer_id": "joao@gmail.com",
+      "seller_id": "joao@gmail.com",
+      "product": {
+        "id": "celular",
+        "name": "celular 1",
+        "user_id": "joao@gmail.com",
+        "price": "4999",
+        "sell": "false",
+        "descript": "This is a new CEl"
+      },
+      "address": {
+        "street": "Rua Norberto Riesta",
+        "number": "3432",
+        "neighborhood": "Jardim Noronha",
+        "city": "São Paulo",
+        "state": "SP"
+      },
+      "id": 3
     }
   ]
 }

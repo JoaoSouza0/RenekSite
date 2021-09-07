@@ -1,5 +1,7 @@
 <template>
   <form action="">
+    <div v-if="userLogged" class="user">
+
     <label for="name">Name: </label>
     <input type="text" name="name" id="name" v-model="name" />
 
@@ -8,6 +10,7 @@
 
     <label for="password">Password: </label>
     <input type="password" name="password" id="password" v-model="password" />
+    </div>
 
     <label for="postalcode">Postalcode: </label>
     <input
@@ -122,6 +125,9 @@ export default {
         this.$store.commit("UPDATE_USER", { street: value });
       },
     },
+    userLogged(){
+      return (!this.$store.state.login || (this.$route.name === 'edit-user'))
+    }
   },
   methods: {
     async preencherCep() {
@@ -140,7 +146,7 @@ export default {
 </script>
 
 <style scoped>
-form {
+form,.user {
   display: flex;
   flex-direction: column;
 }
