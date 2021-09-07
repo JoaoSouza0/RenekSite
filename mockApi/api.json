@@ -1,0 +1,176 @@
+{
+  "user": [
+    {
+      "id": "joao@gmail.com",
+      "name": "Joao victor Costa Souza",
+      "email": "joao@gmail.com",
+      "password": "21312321421",
+      "postalCode": "04853080",
+      "street": "Rua Norberto Riesta",
+      "number": "3432",
+      "neighborhood": "Jardim Noronha",
+      "city": "São Paulo",
+      "state": "SP"
+    }
+  ],
+  "products": [
+    {
+      "id": "celular",
+      "name": "celular 1",
+      "user_id": "joao@gmail.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular23432e",
+      "name": "celular 2",
+      "user_id": "joao@gmail.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular42342w",
+      "name": "celular 3",
+      "user_id": "joao@gmail.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular423432w",
+      "name": "celular 4",
+      "user_id": "joao@gmail.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular423432e",
+      "name": "celular 5",
+      "user_id": "joao@gmail.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular432432",
+      "name": "celular 6",
+      "user_id": "joao@gmail.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular432234",
+      "name": "celular 7",
+      "user_id": "joao@gmail.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular23432e",
+      "name": "celular 2",
+      "user_id": "joao@email.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "celular23432e",
+      "name": "celular 2",
+      "user_id": "joao@email.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new CEl"
+    },
+    {
+      "id": "notebook",
+      "name": "noteBook",
+      "user_id": "joao@email.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new note"
+    },
+    {
+      "id": "book",
+      "name": "Book",
+      "user_id": "joao@email.com",
+      "price": "4999",
+      "sell": "false",
+      "descript": "This is a new Book"
+    },
+    {
+      "name": "Kindle",
+      "price": "300",
+      "descript": "Livro virtual",
+      "photo": "null",
+      "user_id": "joao@gmail.com",
+      "id": "N7w4cM1"
+    }
+  ],
+  "transacao": [
+    {
+      "buyer_id": "joao@gmail.coms",
+      "seller_id": "joao@gmail.com",
+      "product": {
+        "id": "celular",
+        "name": "celular 1",
+        "user_id": "joao@gmail.com",
+        "price": "4999",
+        "sell": "false",
+        "descript": "This is a new CEl"
+      },
+      "address": {
+        "street": "Rua Norberto Riesta",
+        "number": "12",
+        "neighborhood": "Jardim Noronha",
+        "city": "São Paulo",
+        "state": "SP"
+      },
+      "id": 1
+    },
+    {
+      "buyer_id": "joao@gmail.coms",
+      "seller_id": "joao@gmail.com",
+      "product": {
+        "id": "celular",
+        "name": "celular 1",
+        "user_id": "joao@gmail.com",
+        "price": "4999",
+        "sell": "false",
+        "descript": "This is a new CEl"
+      },
+      "address": {
+        "street": "Rua Norberto Riesta",
+        "number": "12",
+        "neighborhood": "Jardim Noronha",
+        "city": "São Paulo",
+        "state": "SP"
+      },
+      "id": 2
+    },
+    {
+      "buyer_id": "joao@gmail.com",
+      "seller_id": "joao@gmail.com",
+      "product": {
+        "id": "celular",
+        "name": "celular 1",
+        "user_id": "joao@gmail.com",
+        "price": "4999",
+        "sell": "false",
+        "descript": "This is a new CEl"
+      },
+      "address": {
+        "street": "Rua Norberto Riesta",
+        "number": "3432",
+        "neighborhood": "Jardim Noronha",
+        "city": "São Paulo",
+        "state": "SP"
+      },
+      "id": 3
+    }
+  ]
+}
