@@ -80,6 +80,12 @@ export default {
   gap: 30px;
   margin: 30px;
 }
+@media screen and (max-width: 400px) {
+  .products {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 .product {
   box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
