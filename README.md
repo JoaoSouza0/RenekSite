@@ -1,23 +1,40 @@
-# Notes App
+# Ranek Site
 
 > Projeto desenvolvido para aprendizado no framework Vue.js
 
-## Status Project 👨🏾‍💻
- * Development
+### Aprendizados
 
-## 🤝 Colaboradores
+Tecnologias aprendidas durante o desenvolvimento
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+- [x] Vue.js
+- [x] Vuex
+- [x] Vue router
+- [x] Componentização
+- [x] JSON server
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="#">
-        <img src="https://avatars2.githubusercontent.com/u/60666522?s=400&u=9e80b1316a08ea2412d2ed74d9755d09938eba63&v=4" width="100px;" alt="Foto do João Victor no GitHub"/><br>
-        <sub>
-          <b>João Victor</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
+### Funcionabilidades do projeto
+
+- [x] Criar usuario
+- [x] Editar usuario
+- [x] Criar produto
+- [x] Editar produto
+- [x] Excluir produto
+- [x] Ver produto
+
+## 💻 Pré-requisitos
+
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+
+* Ter algum browser instalado
+* Ter uma máquina `<Windows / Linux / Mac>`
+
+## ☕ Usando Ranek Site
+
+Para usar Ranek Site, siga estas etapas:
+
+```
+- Clonar o repositório
+- Digitar o comando `npm install` para instalar as dependencias
+- Digitar o comando `npm run json` para iniciar o JSON server em um terminal
+- Em outro terminal digitar o comando `npm run dev` para iniciar o projeto
+```
