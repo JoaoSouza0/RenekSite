@@ -29,6 +29,13 @@ form {
     position: relative;
 }
 
+@media screen and (max-width: 400px) {
+    form {
+    max-width: 325px;
+   
+}
+}
+
 #search{
     width: 100%;
     padding: 20px;
