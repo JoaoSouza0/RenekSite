@@ -33,7 +33,8 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 Para usar Ranek Site, siga estas etapas:
 
 ```
-- Clonar o repositório
+- Clonar o repositório Revendedor API e seguir seus passos
+- Clonar esse repositorio
 - Digitar o comando `npm install` para instalar as dependencias
-- Em outro terminal digitar o comando `npm run dev` para iniciar o projeto
+- `npm run dev` para iniciar o projeto
 ```
