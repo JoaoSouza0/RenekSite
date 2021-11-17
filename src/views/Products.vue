@@ -1,16 +1,16 @@
 <template>
   <section>
     <div v-if="products" class="products">
-      <ul class="photo" v-if="products.photo">
-        <li v-for="(photo, index) in products.photo" :key="index">
-          <img :src="photo.src" :alt="photo.title" />
+      <ul class="photo">
+        <li>
+          <img src="../assets/photos.jpg" alt="photo.title" />
         </li>
       </ul>
       <div class="info">
         <h1>{{ products.name }}</h1>
         <p class="price">{{ products.price | priceNumber }}</p>
         <p class="descript">{{ products.descript }}</p>
-        <transition v-if="products.sell === 'false'" mode="out-in">
+        <transition v-if="products.sell === '0'" mode="out-in">
           <button class="btn" v-if="!final" @click="final =true ">Comprar</button>
           <final-sale v-else :products="products"/>
         </transition>
@@ -34,6 +34,7 @@ export default {
     return {
       products: null,
       final:false,
+      
     };
   },
   methods: {

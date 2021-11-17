@@ -134,7 +134,6 @@ export default {
       const cep = this.postalcode.replace(/\D/g, "");
       if (cep.length === 8) {
         const response = await getCep(cep);
-        console.log(response);
         this.street = response.data.logradouro;
         this.neighborhood = response.data.bairro;
         this.state = response.data.uf;

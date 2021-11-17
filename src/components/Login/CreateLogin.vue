@@ -26,9 +26,21 @@ export default {
   methods: {
     async handleClick() {
       try {
-        await this.$store.dispatch("createUser", this.$store.state.user);
-        await this.$store.dispatch("getUser", this.$store.state.user.email);
-        this.$router.push({ name: "user" });
+        const createResult = await this.$store.dispatch(
+          "createUser",
+          this.$store.state.user
+        );
+        if (createResult) {
+          const getResult = await this.$store.dispatch("getUser", {
+            email: this.$store.state.user.email,
+            password: this.$store.state.user.password,
+          });
+          if (getResult) {
+            this.$router.push({ name: "user" });
+          }
+        } else {
+          this.$vToastify.error("Email ja cadastrado", "Create User Error");
+        }
       } catch (err) {
         console.log(err);
       }

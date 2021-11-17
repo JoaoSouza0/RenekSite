@@ -22,41 +22,51 @@ export default {
     ...mapState(["user"]),
     payload() {
       return {
-        buyer_id: this.user.email,
+        buyer_id: this.user.id,
         seller_id: this.products.user_id,
-        product: this.products,
-        address: {
-          postalcode: this.user.postalcode,
-          street: this.user.street,
-          number: this.user.number,
-          neighborhood: this.user.neighborhood,
-          city: this.user.city,
-          state: this.user.state,
-        },
+        product_id: this.products.id,
       };
     },
   },
   methods: {
     async createTransaction() {
-      return api.post("/transacao", this.payload).then(() => {
-        this.$router.push({ name: "purchases" });
-      });
+      return api
+        .post("/transacao", this.payload)
+        .then(() => {
+          this.$router.push({ name: "purchases" });
+        })
+        .catch(() => {
+          this.$vToastify.error("Erro transaçã compra", "Buy product Error");
+        });
     },
     async createUser() {
       try {
-        await this.$store.dispatch("createUser", this.$store.state.user);
-        await this.$store.dispatch("getUser", this.$store.state.user.email);
-        await this.createTransaction();
+        const createResult = await this.$store.dispatch(
+          "createUser",
+          this.$store.state.user
+        );
+        if (createResult) {
+          const getResult = await this.$store.dispatch("getUser", {
+            email: this.$store.state.user.email,
+            password: this.$store.state.user.password,
+          });
+          if (getResult) {
+            await this.createTransaction();
+          }
+        }
       } catch (err) {
-        console.log(err);
+        this.$vToastify.error(
+          "Erro ao finalizar compra verifique o formulario",
+          "Finish Sale Error"
+        );
       }
     },
     finalizarCompra() {
-       if (this.$store.state.login) {
+      if (this.$store.state.login) {
         this.createTransaction();
       } else {
         this.createUser();
-      } 
+      }
     },
   },
 };

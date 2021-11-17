@@ -5,7 +5,7 @@
         class="product-img"
         :to="{ name: 'products', params: { id: product.id } }"
       >
-        <img v-if="product.photo" :src="product.photo[0].src" alt="" />
+        <img v-if="product.photo" src="product.photo[0].src" alt="" />
         <p>See Product</p>
       </router-link>
       <div class="info">

@@ -21,7 +21,7 @@ export default new Vuex.Store({
       city: "",
       state: "",
     },
-    user_products:[]
+    user_products: []
   },
   mutations: {
     UPDATE_LOGIN(state, payload) {
@@ -38,22 +38,35 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getUserProducts(context){
-      const url = `/products?user_id=${context.state.user.id}`
-      const response = (await api.get(url)).data
-      context.commit("UPDATE_USER_PRODUCTS", response)
+    async getUserProducts(context) {
+      try {
+        const url = `/user/products/${context.state.user.id}`
+        const response = (await api.get(url)).data
+        context.commit("UPDATE_USER_PRODUCTS", response)
+      } catch (e) {
+        context.commit("UPDATE_USER_PRODUCTS", [])
+      }
     },
     async getUser(context, paylaod) {
-      return api.get(`/user/${paylaod}`).then(response => {
-        context.commit("UPDATE_USER", response.data)
-        context.commit("UPDATE_LOGIN", true)
+      return api.get(`/user?email=${paylaod.email}&password=${paylaod.password}`).then(response => {
+        if (response.data[0]) {
+          context.commit("UPDATE_USER", response.data[1])
+          context.commit("UPDATE_LOGIN", true)
+        }
+        return response.data[0]
+      }).catch((e) => {
+        console.log(e)
       })
     },
     createUser(context, payload) {
+
       return api.post('/user', {
         ...payload,
-        id: payload.email
+      }).then(response => response.data[0]).catch(() => {
+        this.$vToastify.error("Erro ao cadastrar verifique os campos", "Create User Error");
       })
+
+
     },
     deslogarUser(context) {
       context.commit("UPDATE_USER", {

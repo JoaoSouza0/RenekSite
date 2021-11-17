@@ -4,6 +4,7 @@
       <div v-if="products && products.length" class="products" key="products">
         <div v-for="(product, index) in products" :key="index" class="product">
           <router-link :to="{ name: 'products', params: { id: product.id } }">
+            <img class="img" src="../../assets/photos.jpg" alt="noimageyet" ref="photo" width="" />
             <h2 class="title">{{ product.name }}</h2>
             <p class="price">{{ product.price | priceNumber }}</p>
             <p class="descript">{{ product.descript }}</p>
@@ -39,6 +40,7 @@ export default {
       products: null,
       productsPerPage: 5,
       productsTotal: 0,
+      photo:null
     };
   },
   components: {
@@ -62,9 +64,10 @@ export default {
       this.products = productResponse.data;
     },
   },
-  created() {
+  beforeMount() {
     this.getProducts();
   },
+
 };
 </script>
 

@@ -7,7 +7,13 @@
     <input type="text" id="price" name="price" v-model="product.price" />
 
     <label for="photo">Photo: </label>
-    <input type="file" id="photo" name="photo" ref="photo" />
+    <input
+      type="file"
+      id="photo"
+      name="photo"
+      @change="inputFile"
+      ref="photo"
+    />
 
     <label for="descript">Descrição: </label>
     <textarea
@@ -36,16 +42,21 @@ export default {
         name: "",
         price: "",
         descript: "",
+        sell: true,
         photo: "null",
       },
     };
   },
   methods: {
+    inputFile(e) {
+      console.log(e.target.files);
+    },
     format() {
       this.product.user_id = this.$store.state.user.id;
     },
     handleClick() {
-      this.format()
+      this.format();
+
       api.post("/products", this.product).then(() => {
         this.$store.dispatch("getUserProducts");
       });

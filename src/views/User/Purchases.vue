@@ -1,6 +1,6 @@
 <template>
   <div>
-    <show-products operator="buyed_id" itemTitle="Compras"/>
+    <show-products operator="buyer" itemTitle="Compras"/>
   </div>
 
 </template>

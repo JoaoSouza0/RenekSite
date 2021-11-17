@@ -1,13 +1,12 @@
 <template>
   <section>
     <div>
-      <h2>{{itemTitle}}</h2>
-      <div class="product-wrapper" v-for="(item,index) in itens" :key="index">
-
-        <product-item v-if ="item.product" :product="item.product">
+      <h2>{{ itemTitle }}</h2>
+      <div class="product-wrapper" v-for="(item, index) in itens" :key="index">
+        <product-item v-if="item" :product="item">
           <p class="seller">
-            <span>Seller: </span>
-            {{item['seller_id']}}
+            <span>{{operator}}: </span>
+            {{ userInfos.name }}
           </p>
         </product-item>
       </div>
@@ -17,63 +16,63 @@
 </template>
 
 <script>
-import ProductItem from './item.vue'
-import {api} from '../../services.js'
-import {mapState} from 'vuex'
+import ProductItem from "./item.vue";
+import { api } from "../../services.js";
+import { mapState } from "vuex";
 export default {
-  name:"ShowProducts",
-  data(){
-    return{
-      itens:null
-    }
+  name: "ShowProducts",
+  data() {
+    return {
+      itens: null,
+      userInfos:null,
+    };
   },
-   props:{
-      operator:{
-          default: null,
-          type:String,
-      },
-      itemTitle:{
-          type:String,
-      }
+  props: {
+    operator: {
+      default: null,
+      type: String,
+    },
+    itemTitle: {
+      type: String,
+    },
   },
-  components:{
-    ProductItem
+  components: {
+    ProductItem,
   },
-  methods:{
-      getOperation(){
-        api.get(`/transacao?${this.operator}=${this.user.id}`).then(response =>{
-        this.itens = response.data
-            
-        })
-      },
+  methods: {
+    getOperation() {
+      api
+        .get(`/user/transaction/${this.operator}/${this.user.id}`)
+        .then((response) => {
+          this.itens = response.data[1]
+          this.userInfos= response.data[0]
+        });
+    },
   },
-  computed:{
-  ...mapState(["user","login"])
+  computed: {
+    ...mapState(["user", "login"]),
   },
-  watch:{
-    login(){
-      this.getOperation()
-    }
+  watch: {
+    login() {
+      this.getOperation();
+    },
   },
-  created()
-  {
-    if(this.login) this.getOperation()
-  }
-  
-}
+  created() {
+    if (this.login) this.getOperation();
+  },
+};
 </script>
 
 <style scoped>
-  
-  .product-wrapper{
-    margin-bottom: 40px;
-  }
-  
-  .vendedor span {
-    color: #e80;
-  }
+.product-wrapper {
+  margin-bottom: 40px;
+}
 
-  h2{
-    margin-bottom: 20px;
-  }
+.vendedor span {
+  color: #e80;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
 </style>
