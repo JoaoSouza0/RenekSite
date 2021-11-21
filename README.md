@@ -10,7 +10,6 @@ Tecnologias aprendidas durante o desenvolvimento
 - [x] Vuex
 - [x] Vue router
 - [x] Componentização
-- [x] JSON server
 
 ### Funcionabilidades do projeto
 
@@ -27,14 +26,15 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 * Ter algum browser instalado
 * Ter uma máquina `<Windows / Linux / Mac>`
+* Ter o Node.js instalado na sua maquina
 
 ## ☕ Usando Ranek Site
 
 Para usar Ranek Site, siga estas etapas:
 
 ```
-- Clonar o repositório
+- Clonar o repositório Revendedor API e seguir seus passos
+- Clonar esse repositorio
 - Digitar o comando `npm install` para instalar as dependencias
-- Digitar o comando `npm run json` para iniciar o JSON server em um terminal
-- Em outro terminal digitar o comando `npm run dev` para iniciar o projeto
+- `npm run dev` para iniciar o projeto
 ```
