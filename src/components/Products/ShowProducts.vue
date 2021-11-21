@@ -9,7 +9,7 @@
             {{ userInfos.name }}
           </p>
         </product-item>
-      </div>
+      </div>      
       <slot></slot>
     </div>
   </section>
@@ -25,6 +25,7 @@ export default {
     return {
       itens: null,
       userInfos:null,
+      transactionInfos:null,
     };
   },
   props: {

@@ -6,6 +6,9 @@
     <label for="price">Price: </label>
     <input type="text" id="price" name="price" v-model="product.price" />
 
+    <label for="quantity">Quantity: </label>
+    <input type="text" id="quantity" name="quantity" v-model="product.quantity" />
+
     <label for="photo">Photo: </label>
     <input
       type="file"
@@ -40,10 +43,10 @@ export default {
     return {
       product: {
         name: "",
-        price: "",
+        quantity:"",
+        imagePath:"null",
         descript: "",
-        sell: true,
-        photo: "null",
+        price: "",
       },
     };
   },

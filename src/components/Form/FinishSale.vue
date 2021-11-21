@@ -1,6 +1,8 @@
 <template>
   <div>
     <h2>Finalizar compra</h2>
+    <label for="quantity">Quantity: </label>
+    <input type="text" name="quantity" id="quantity" v-model="quantity" />
     <user-form>
       <button class="btn" @click.prevent="finalizarCompra()">
         Finalizar Compra
@@ -17,14 +19,24 @@ export default {
   components: {
     UserForm,
   },
+  data(){
+    return{
+      quantity:1,
+    }
+  },
   props: ["products"],
   computed: {
     ...mapState(["user"]),
+    quantityPayload(){
+      return this.products.quantity - this.quantity
+    },
     payload() {
       return {
         buyer_id: this.user.id,
         seller_id: this.products.user_id,
-        product_id: this.products.id,
+        product_id: this.products.id, 
+        quantity: Number(this.quantity),
+        total_vl: this.quantity * this.products.price
       };
     },
   },
@@ -33,10 +45,13 @@ export default {
       return api
         .post("/transacao", this.payload)
         .then(() => {
+          api.put(`products/${this.products.id}`, {...this.products,
+            quantity:String(this.quantityPayload)
+          })
           this.$router.push({ name: "purchases" });
         })
         .catch(() => {
-          this.$vToastify.error("Erro transaçã compra", "Buy product Error");
+          this.$vToastify.error("Erro transação compra", "Buy product Error");
         });
     },
     async createUser() {
@@ -62,11 +77,12 @@ export default {
       }
     },
     finalizarCompra() {
-      if (this.$store.state.login) {
+      console.log(this.quantityPayload)
+       if (this.$store.state.login) {
         this.createTransaction();
       } else {
         this.createUser();
-      }
+      }  
     },
   },
 };

@@ -8,8 +8,9 @@
     <label for="email">Email: </label>
     <input type="email" name="email" id="email" v-model="email" />
 
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password" v-model="password" />
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" v-model="password" />
+    
     </div>
 
     <label for="postalcode">Postalcode: </label>
@@ -23,6 +24,9 @@
 
     <label for="street">Street: </label>
     <input type="text" name="street" id="street" v-model="street" />
+    
+    <label for="cellphone">Cellphone: </label>
+    <input type="text" name="street" id="cellphone" v-model="cellphone" />
 
     <label for="number">Number: </label>
     <input type="text" name="number" id="number" v-model="number" />
@@ -91,6 +95,14 @@ export default {
       },
       set(value) {
         this.$store.commit("UPDATE_USER", { number: value });
+      },
+    },
+    cellphone: {
+      get() {
+        return this.$store.state.user.cellphone;
+      },
+      set(value) {
+        this.$store.commit("UPDATE_USER", { cellphone: value });
       },
     },
     neighborhood: {
